@@ -31,9 +31,9 @@ class App_Announcement extends WP_Widget{
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('wpa_title')); ?>">Title</label>
             <input type="text"
-                   name="<?php echo esc_attr($this->get_field_name('wpa_title')); ?>" 
-                   id="<?php echo esc_attr($this->get_field_id('wpa_title')); ?>" 
-                   value="<?php echo esc_attr($old_title); ?>" 
+                   name="<?php echo esc_attr($this->get_field_name('wpa_title')); ?>"
+                   id="<?php echo esc_attr($this->get_field_id('wpa_title')); ?>"
+                   value="<?php echo esc_attr($old_title); ?>"
                    class="widefat">
         </p>
         <p>
@@ -47,7 +47,7 @@ class App_Announcement extends WP_Widget{
         <?php
     }
 
-    // To save form data 
+    // To save form data
 
     public function update( $new_instance, $old_instance){
 
@@ -55,7 +55,7 @@ class App_Announcement extends WP_Widget{
 
         $instance['wpa_title'] = isset($new_instance['wpa_title']) ? $new_instance['wpa_title'] : "";
 
-        $instance['wp_description'] = isset($new_instance['wpa_description']) ? $new_instance['wpa_description'] : "";
+        $instance['wpa_description'] = isset($new_instance['wpa_description']) ? $new_instance['wpa_description'] : "";
 
         return $instance;
     }
@@ -70,6 +70,10 @@ class App_Announcement extends WP_Widget{
                 echo $instance['wpa_title'];
 
             echo $args['after_title'];
+
+            echo '<img src="'.WPA_PLUGIN_URL.'img/trend_2601544.png"/>';
+
+            echo '<div class="widget-description">'.wpautop( $instance['wpa_description']).'</div>';
 
         echo $args['after_widget'];
     }
