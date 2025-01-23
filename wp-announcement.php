@@ -21,4 +21,6 @@
 
  function register_wpa_widget(){
 
+    // Register widget concept
+    register_widget("App_Announcement");
  }
