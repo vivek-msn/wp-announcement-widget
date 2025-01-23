@@ -26,7 +26,7 @@ class App_Announcement extends WP_Widget{
     public function form($instance) {
 
         $old_title = isset($instance['wpa_title']) ? $instance['wpa_title'] : "";
-        $old_decription = isset($instance['wpa_description']) ? $instance['wpa_description'] : "";
+        $old_description = isset($instance['wpa_description']) ? $instance['wpa_description'] : "";
         ?>
         <p>
             <label for="<?php echo esc_attr($this->get_field_id('wpa_title')); ?>">Title</label>
@@ -37,11 +37,11 @@ class App_Announcement extends WP_Widget{
                    class="widefat">
         </p>
         <p>
-            <label for="<?php echo esc_attr($this->get_field_id('wpa_description')); ?>">Title</label>
+            <label for="<?php echo esc_attr($this->get_field_id('wpa_description')); ?>">Description</label>
             <input type="text-area"
-                   name="<?php echo esc_attr($this->get_field_name('wpa_description')); ?>" 
+                   name="<?php echo esc_attr($this->get_field_name('wpa_description')); ?>"
                    id="<?php echo esc_attr($this->get_field_id('wpa_description')); ?>" cols="30" rows="10"
-                   value="<?php echo esc_attr($old_decription); ?>"
+                   value="<?php echo esc_attr($old_description); ?>"
                    class="widefat">
         </p>
         <?php
@@ -60,5 +60,18 @@ class App_Announcement extends WP_Widget{
         return $instance;
     }
 
-    
+    // Render Widget to Frontend
+
+    public function widget( $args, $instance ) {
+        echo $args['before_widget'];
+
+            echo $args['before_title'];
+
+                echo $instance['wpa_title'];
+
+            echo $args['after_title'];
+
+        echo $args['after_widget'];
+    }
+
 }
